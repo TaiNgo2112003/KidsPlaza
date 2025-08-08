@@ -138,3 +138,94 @@
     justify-content: space-around;
   }
 }
+/* Thêm vào Header.module.css */
+
+.iconItem {
+  /* Base styles */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fdf1f1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.iconItem:hover {
+  background-color: rgba(236, 72, 153, 0.1);
+  color: #ec4899;
+  transform: translateY(-1px);
+}
+
+.iconItem:active {
+  transform: translateY(0);
+}
+
+/* Icon styles */
+.iconItem svg {
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Ripple effect */
+.iconItem::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(236, 72, 153, 0.3);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.iconItem:hover::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Logged in state */
+.iconItem.loggedIn {
+  color: #8b5cf6;
+}
+
+.iconItem.loggedIn:hover {
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .iconItem {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .iconItem span {
+    display: none;
+  }
+  
+  .iconItem svg {
+    font-size: 18px;
+  }
+}

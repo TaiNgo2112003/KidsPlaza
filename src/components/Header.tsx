@@ -3,11 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Header.module.css';
 import Link from 'next/link';
-import { FaHistory, FaUser, FaShoppingCart, } from 'react-icons/fa';
+import { FaHistory, FaUser, FaShoppingCart } from 'react-icons/fa';
+import LoginPopup from './LoginPopup';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const [isTop, setIsTop] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
 
+  useEffect(() => {
+    const authToken = document.cookie.includes('authToken');
+    setIsLoggedIn(authToken);
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       setIsTop(window.scrollY === 0);
@@ -34,24 +43,27 @@ const Header = () => {
             </button>
           </div>
 
-
           {/* Right Icons */}
           <div className={styles.iconsContainer}>
             <Link href="/order-history" className={styles.iconItem}>
               <FaHistory />
               <span>Lịch sử đơn hàng</span>
             </Link>
-            <Link href="/account" className={styles.iconItem}>
+
+            {/* Thay đổi phần này từ Link thành button */}
+            <button
+              onClick={() => setShowLogin(true)}
+              className={styles.iconItem}
+            >
               <FaUser />
-              <span>Tài khoản</span>
-            </Link>
+              <span>{isLoggedIn ? 'Logged in' : 'Đăng nhập'}</span>
+            </button>
+
             <Link href="/cart" className={styles.iconItem}>
               <FaShoppingCart />
               <span>Giỏ hàng</span>
             </Link>
           </div>
-
-
         </div>
       </div>
 
@@ -77,8 +89,10 @@ const Header = () => {
           </div>
         </div>
       )}
-    </header>
 
+      {/* Thêm Login Popup vào cuối component */}
+      {showLogin && <LoginPopup onClose={() => setShowLogin(false)} />}
+    </header>
   );
 };
 
