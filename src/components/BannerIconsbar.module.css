@@ -1,0 +1,37 @@
+.iconSliderWrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #9bbde2; /* 👈 Nền của cả thanh icons */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Icon container có bg riêng cho mỗi icon */
+.iconContainer {
+  background-color: white;
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.iconContainer:hover {
+  transform: scale(1.05);
+}
+
+/* Swiper image (icon) */
+.iconContainer :global(img) {
+  object-fit: contain;
+}
+
+/* Ẩn nút navigation nếu không cần */
+.iconSliderWrapper :global(.swiper-button-prev),
+.iconSliderWrapper :global(.swiper-button-next),
+.iconSliderWrapper :global(.swiper-pagination) {
+  display: none !important;
+}

@@ -1,0 +1,274 @@
+/* src/components/Footer.module.css */
+.footer {
+  background-color: var(--kp-bg-light);
+  color: var(--kp-gray-dark);
+  padding: 40px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footerSection {
+  margin-bottom: 30px;
+}
+
+.footerBrand {
+  font-size: 24px;
+  color: var(--kp-primary-blue);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.highlight {
+  color: var(--kp-accent-yellow);
+}
+
+.footerTitle {
+  color: var(--kp-primary-blue);
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.footerText {
+  margin: 8px 0;
+}
+
+.footerLink {
+  color: var(--kp-gray-dark);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footerLink:hover {
+  color: var(--kp-primary-blue);
+  text-decoration: underline;
+}
+
+.footerList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerListItem {
+  margin-bottom: 8px;
+}
+
+/* Newsletter */
+.newsletter {
+  margin-bottom: 25px;
+}
+
+.newsletterLabel {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.newsletterInput {
+  display: flex;
+}
+
+.newsletterInput input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--kp-gray-medium);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+}
+
+.newsletterInput button {
+  background-color: var(--kp-primary-blue);
+  color: white;
+  border: none;
+  padding: 0 15px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+/* Payment methods */
+.paymentMethods {
+  margin-bottom: 25px;
+}
+
+.paymentTitle {
+  margin-bottom: 10px;
+  font-weight: 600;
+
+}
+
+.paymentIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  padding: 8px;
+  /* Padding tổng thể */
+  border-radius: 6px;
+  align-items: center;
+  justify-content: start;
+  /* hoặc center nếu bạn muốn giữa */
+}
+
+.paymentIcon {
+  width: 30px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.paymentIcon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+/* Payment methods */
+.shippingMethods {
+  margin-bottom: 25px;
+}
+
+.shippingTitle {
+  margin-bottom: 10px;
+  font-weight: 600;
+
+}
+
+.shippingIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  padding: 8px;
+  /* Padding tổng thể */
+  border-radius: 6px;
+  align-items: center;
+  justify-content: start;
+  /* hoặc center nếu bạn muốn giữa */
+}
+
+.paymentIcon {
+  width: 30px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.paymentIcon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Social connect */
+.socialTitle {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Footer bottom */
+.footerBottom {
+  background-color: var(--kp-gray-dark);
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.certification {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 13px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 16px;
+  /* Khoảng cách giữa các icon */
+  margin-top: 8px;
+}
+
+.socialIcons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.socialIcons a:hover {
+  transform: scale(1.1);
+}
+.certificateImage {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+.socialIcons {
+  display: flex;
+  gap: 16px; /* Khoảng cách giữa các icon */
+  margin-top: 8px;
+}
+
+.socialIcons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.socialIcons a:hover {
+  transform: scale(1.1);
+}
+
+/* Màu đặc trưng cho từng nền tảng */
+.facebook {
+  background-color: #1877F2;
+}
+
+.tiktok {
+  background-color: #010101;
+}
+
+.youtube {
+  background-color: #FF0000;
+}
+
+.amazon {
+  background-color: #FF9900;
+}

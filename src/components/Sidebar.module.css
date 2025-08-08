@@ -1,0 +1,417 @@
+  /* Main Container */
+  .sidebarContainer {
+    width: 150px;
+    flex-shrink: 0;
+    position: relative;
+    margin-left: 120px;
+    /* giữ nguyên các style khác của bạn */
+  }
+
+  .layoutWrapper {
+    display: flex;
+    width: 100%;
+    height: 60vh;
+    /* chiều cao full màn hình */
+    overflow: hidden;
+  }
+
+  .mainContent {
+    flex: 1;
+    /* chiếm toàn bộ khoảng trống giữa 2 sidebar */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f9f9f9;
+  }
+
+  .bannerLarge {
+    flex: 7;
+    /* 70% */
+    position: relative;
+    /* để Image layout="fill" hoạt động */
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 8px;
+  }
+
+  .bannerSmall {
+    flex: 3;
+    /* 30% */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 8px;
+  }
+
+  /* Overlay Effect */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    pointer-events: none;
+    backdrop-filter: blur(1px);
+    transition: all 0.3s ease;
+  }
+
+  /* Compact Sidebar */
+  .compactSidebar {
+    border-radius: 15px;
+    border-color: #1890ff;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #f0f0f0;
+    z-index: 20;
+    transition: all 0.3s ease;
+  }
+
+  .compactSidebarRight {
+    border-radius: 15px;
+    border-color: #1890ff;
+    width: 170px;
+    background-color: rgb(179, 223, 235);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    border-right: 1px solid #f0f0f0;
+    z-index: 20;
+    transition: all 0.3s ease;
+  }
+
+  .sidebarTitle {
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+    padding: 12px 4px;
+    border-bottom: 1px solid #f5f5f5;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .categoryList {
+    padding: 8px 0;
+  }
+
+  .categoryItem {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+  }
+
+  .categoryItem:hover {
+    background-color: #f8f8f8;
+  }
+
+  .activeCategory {
+    background-color: #e6f4ff;
+    border-left: 3px solid #1890ff;
+  }
+
+  .categoryIcon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .categoryName {
+    font-size: 10px;
+    color: #333;
+    text-align: center;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .activeCategory .categoryName {
+    color: #1890ff;
+    font-weight: 500;
+  }
+
+  /* Submenu */
+  .submenu {
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 152px;
+    width: 320px;
+    height: 93%;
+    background-color: white;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.08);
+    border-right: 1px solid #eee;
+    z-index: 30;
+    padding: 16px;
+    overflow-y: auto;
+  }
+
+  .submenuTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .submenuGroups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .submenuGroup {
+    margin-bottom: 12px;
+  }
+
+  .submenuGroupTitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 8px;
+    padding-left: 4px;
+  }
+
+  .submenuItems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .submenuItem {
+    font-size: 13px;
+    color: #666;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .submenuItem:hover {
+    background-color: #f0f7ff;
+    color: #1890ff;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .compactSidebar {
+      width: 60px;
+    }
+
+    .submenu {
+      left: 60px;
+      width: 280px;
+    }
+
+    .submenuGroups {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* -------- RIGHT SIDEBAR -------- */
+
+
+  /* Greeting section */
+  .avatarSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    /* 👈 Làm tròn xoe */
+    background-color: #ddd;
+    overflow: hidden;
+    /* 👈 Nếu có ảnh, đảm bảo không bị tràn */
+  }
+
+  .greeting {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  /* Category Items (nếu cần giữ) */
+  .rightCategoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .rightCategoryItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+
+  .rightCategoryItem:hover {
+    background-color: #f5f5f5;
+    color: #1890ff;
+  }
+
+  /* Auth Buttons */
+  .authButtons {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    margin: 0px 0;
+  }
+
+  .authBtn {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .authBtn:hover {
+    border-color: #1890ff;
+    color: #1890ff;
+    background-color: rgb(18, 37, 132);
+  }
+
+  /* Tick List (Account Options) */
+  .accountOptionsRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 16px 0 24px 0;
+  }
+
+  .accountItem {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .accountItem:hover span {
+    color: #1890ff;
+  }
+
+  .iconTick {
+    font-size: 18px;
+    color: #060905;
+  }
+
+  /* Banner App Download */
+  .banner {
+    margin: 15px;
+  }
+
+  .banner img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Social Stats (Mạng xã hội) */
+  .socialRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .socialItem {
+    flex: 1;
+    max-width: 90px;
+    min-width: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.2;
+  }
+
+  .socialItem img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  /* Tick Style (Fallback) */
+  .tick {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+
+  /* Thêm vào Sidebar.module.css */
+  .bannerContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 10px;
+    height: 100%;
+  }
+
+  .mainBanner {
+    flex: 0.7;
+    /* Chiếm 70% */
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .secondaryBanner {
+    flex: 0.3;
+    /* Chiếm 30% */
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* mới */
+  .sidebarRightContainer {
+    width: 320px;
+    flex-shrink: 0;
+    position: relative;
+    /* hoặc fixed nếu bạn thích */
+    background-color: #ffffff;
+    border-left: 1px solid #e0e0e0;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.08);
+    padding: 1px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }

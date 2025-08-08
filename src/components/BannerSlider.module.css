@@ -1,0 +1,83 @@
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+/* Swiper slide styling */
+:global(.swiper-slide) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+:global(.swiper-slide:hover) {
+  transform: scale(1.03);
+}
+
+/* Image inside slide */
+:global(.swiper-slide img) {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* Navigation buttons */
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+:global(.swiper-button-next:hover),
+:global(.swiper-button-prev:hover) {
+  background-color: #1890ff;
+  color: white;
+}
+
+/* Pagination bullets */
+:global(.swiper-pagination-bullet) {
+  background: #ccc;
+  opacity: 1;
+  transition: background 0.3s;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background: #1890ff;
+}
+/* Navigation buttons (nút điều hướng) */
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: #000; /* 👈 Mũi tên đen */
+  background-color: #fff; /* 👈 Nền trắng */
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* 👈 Bóng nhẹ cho đẹp */
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover effect: giữ màu đen */
+:global(.swiper-button-next:hover),
+:global(.swiper-button-prev:hover) {
+  background-color: #f2f2f2; /* 👈 Nhẹ hơn khi hover */
+  color: #000;
+}
+
+/* Điều chỉnh mũi tên nhỏ lại một chút nếu cần */
+:global(.swiper-button-next::after),
+:global(.swiper-button-prev::after) {
+  font-size: 16px;
+}
