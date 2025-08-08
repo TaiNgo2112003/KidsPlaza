@@ -1,9 +1,12 @@
 // app/products/[id]/page.tsx
+'use client'; // Thêm directive này nếu sử dụng client-side features
+
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 import AddToCartButton from '../../../components/AddToCartButton';
-import { GET_PRODUCT_BY_ID } from './../../../../graphql/queries';
+import { GET_PRODUCT_BY_ID } from '../../../../graphql/queries';
 import styles from './ProductDetail.module.css';
+import { useEffect, useState } from 'react';
 
 interface Product {
   id: string;
@@ -16,31 +19,39 @@ interface Product {
   stock: number;
 }
 
-// ✅ Định nghĩa kiểu đúng theo Next.js App Router
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+// Tạo Apollo Client ở file riêng (lib/apolloClient.ts)
+const client = new ApolloClient({
+  uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
+  cache: new InMemoryCache(),
+});
 
-// ✅ Hàm fetch sản phẩm
-async function getProduct(id: string): Promise<Product> {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
-    cache: new InMemoryCache(),
-  });
+export default function ProductDetail({ params }: { params: { id: string } }) {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const { data } = await client.query({
-    query: GET_PRODUCT_BY_ID,
-    variables: { id },
-  });
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data } = await client.query({
+          query: GET_PRODUCT_BY_ID,
+          variables: { id: params.id },
+        });
+        setProduct(data.product);
+      } catch (err) {
+        setError('Failed to fetch product');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  return data.product;
-}
+    fetchProduct();
+  }, [params.id]);
 
-// ✅ Hàm render page
-export default async function ProductDetail({ params }: PageProps) {
-  const product = await getProduct(params.id);
+  if (loading) return <div className={styles.loading}>Loading...</div>;
+  if (error) return <div className={styles.error}>{error}</div>;
+  if (!product) return <div className={styles.error}>Product not found</div>;
 
   return (
     <div className={styles.container}>
@@ -66,6 +77,7 @@ export default async function ProductDetail({ params }: PageProps) {
                   width={120}
                   height={120}
                   className={styles.imageTransition}
+                  loading="lazy"
                 />
               </div>
             ))}
