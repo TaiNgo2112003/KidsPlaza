@@ -20,11 +20,11 @@ export default function Footer() {
           {/* ✅ Mục chứng nhận chất lượng */}
           <div className={styles.qualityCertificate}>
             <h4 className={styles.footerSubtitle}>Chứng nhận chất lượng</h4>
-            <Image
+            {/* <Image
               src="/icons/quality-certificate.png"
               alt="Chứng nhận chất lượng"
               className={styles.certificateImage}
-            />
+            /> */}
           </div>
         </div>
 
@@ -178,7 +178,7 @@ export default function Footer() {
           zIndex: 1000,
         }}>
           <FaFacebook size={32} color="#3b5998" title="Facebook" />
-          <Image src="/icons/zalo.png" alt="Zalo" width={32} />
+          {/* <Image src="/icons/zalo.png" alt="Zalo" width={32} /> */}
           <FaPhone size={32} color="#0b1f4bff" title="Hotline" />
         </div>
     </footer>

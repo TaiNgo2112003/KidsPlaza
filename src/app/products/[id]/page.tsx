@@ -1,8 +1,8 @@
 // app/products/[id]/page.tsx
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 import AddToCartButton from '../../../components/AddToCartButton';
-import { GET_PRODUCT_BY_ID } from "./../../../../graphql/queries";
+import { GET_PRODUCT_BY_ID } from './../../../../graphql/queries';
 import styles from './ProductDetail.module.css';
 
 interface Product {
@@ -16,9 +16,17 @@ interface Product {
   stock: number;
 }
 
+// ✅ Định nghĩa kiểu đúng theo Next.js App Router
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+// ✅ Hàm fetch sản phẩm
 async function getProduct(id: string): Promise<Product> {
   const client = new ApolloClient({
-    uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
     cache: new InMemoryCache(),
   });
 
@@ -26,10 +34,12 @@ async function getProduct(id: string): Promise<Product> {
     query: GET_PRODUCT_BY_ID,
     variables: { id },
   });
+
   return data.product;
 }
 
-export default async function ProductDetail({ params }: { params: { id: string } }) {
+// ✅ Hàm render page
+export default async function ProductDetail({ params }: PageProps) {
   const product = await getProduct(params.id);
 
   return (
@@ -65,7 +75,7 @@ export default async function ProductDetail({ params }: { params: { id: string }
         {/* Product Info */}
         <div className={styles.productInfo}>
           <h1 className={styles.productTitle}>{product.name}</h1>
-          
+
           <div className={styles.priceContainer}>
             <span className={styles.price}>{product.price.toLocaleString()}₫</span>
             {product.stock > 0 ? (
@@ -81,9 +91,9 @@ export default async function ProductDetail({ params }: { params: { id: string }
 
           <div className={styles.detailsSection}>
             <h3 className={styles.detailsTitle}>Chi tiết sản phẩm</h3>
-            <div 
+            <div
               className={styles.detailsContent}
-              dangerouslySetInnerHTML={{ __html: product.details }} 
+              dangerouslySetInnerHTML={{ __html: product.details }}
             />
           </div>
 
