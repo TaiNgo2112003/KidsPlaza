@@ -5,6 +5,7 @@ import BannerSlider from "@/components/BannerSlider";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Home() {
   const { data, loading, error } = useQuery(GET_PRODUCTS);
@@ -15,7 +16,7 @@ export default function Home() {
     error: errorBanners,
   } = useQuery(GET_BANNERS);
 
-  if (loading || loadingBanners) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  if (loading || loadingBanners) return <LoadingSpinner />;
   if (error || errorBanners) return <div className="min-h-screen flex items-center justify-center text-red-500">Error loading data.</div>;
 
   return (

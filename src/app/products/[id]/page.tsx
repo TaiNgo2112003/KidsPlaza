@@ -18,7 +18,7 @@ interface Product {
 
 async function getProduct(id: string): Promise<Product> {
   const client = new ApolloClient({
-    uri: process.env.GRAPHQL_ENDPOINT,
+    uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
     cache: new InMemoryCache(),
   });
 

@@ -8,6 +8,7 @@ import BannerSlider from "@/components/BannerSliderSidebar";
 import IconSlide from "@/components/BannerIconsbar";
 import { useQuery } from "@apollo/client";
 import Avatar from '@mui/material/Avatar';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const categories = [
   { name: "Mẹ bầu và sau sinh", icon: "/SidebarIcons/baby.png" },
@@ -47,6 +48,7 @@ export default function Sidebar() {
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isHoveringSidebar, setIsHoveringSidebar] = useState(false);
+  if (loading) return <LoadingSpinner />;
 
   return (
     <>
