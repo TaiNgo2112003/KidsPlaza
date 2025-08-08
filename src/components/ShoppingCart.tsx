@@ -4,6 +4,7 @@
 import { useCart } from "./CartContext";
 import styles from './ShoppingCart.module.css';
 import { X, Plus, Minus } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ShoppingCart() {
   const { 
@@ -40,7 +41,7 @@ export default function ShoppingCart() {
               {cartItems.map((item) => (
                 <div key={item.id} className={styles.cartItem}>
                   <div className={styles.itemImageContainer}>
-                    <img 
+                    <Image 
                       src={item.image} 
                       alt={item.name} 
                       className={styles.itemImage}

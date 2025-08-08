@@ -31,9 +31,9 @@ const Header = () => {
       <div className={styles.topBar}>
         <div className={styles.topBarContent}>
           {/* Logo */}
-          <Link href="/" className={styles.logo}>
+          {/* <Link href="/" className={styles.logo}>
             <img src="/icons/IconHeader/Logo_KPZ.png" alt="KidsPlaza" />
-          </Link>
+          </Link> */}
 
           {/* Search Bar */}
           <div className={styles.searchContainer}>
