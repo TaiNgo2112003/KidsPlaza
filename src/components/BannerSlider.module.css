@@ -6,7 +6,6 @@
   margin-right: 50px;
 }
 
-/* Wrapper để chứa tất cả các global swiper style */
 .sliderContainer :global(.swiper-slide) {
   display: flex;
   justify-content: center;

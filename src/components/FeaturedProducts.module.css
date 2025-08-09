@@ -1,6 +1,6 @@
-/* FeaturedProducts.module.css */
+/* components/FeaturedProducts.module.css */
 .featuredContainer {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
@@ -26,8 +26,9 @@
 
 .productsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .productCard {
@@ -35,19 +36,22 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 1px solid #e5e7eb;
 }
 
 .cardHover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(236, 72, 153, 0.1);
+  border-color: #ec4899;
 }
 
 .imageContainer {
   position: relative;
-  padding: 1rem;
+  padding: 1.5rem;
   background: #f8fafc;
+  cursor: pointer;
 }
 
 .productImage {
@@ -69,72 +73,151 @@
   background: rgba(0, 0, 0, 0.7);
   color: white;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.75rem;
   transform: translateY(100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   cursor: pointer;
 }
 
 .quickViewVisible {
   transform: translateY(0);
+  opacity: 1;
+}
+
+.eyeIcon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
 .productInfo {
-  padding: 1.25rem;
+  padding: 1.5rem;
 }
 
 .productName {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2d3748;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.productName:hover {
+  color: #ec4899;
 }
 
 .productDescription {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   color: #718096;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 40px;
+}
+
+.priceCartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .productPrice {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #ec4899;
-  margin-bottom: 1rem;
 }
 
 .addToCartButton {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  padding: 0.75rem;
-  background: linear-gradient(90deg, #ec4899, #8b5cf6);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  gap: 0.5rem;
 }
 
 .addToCartButton:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(236, 72, 153, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(236, 72, 153, 0.3);
 }
 
 .cartIcon {
   width: 20px;
   height: 20px;
   fill: currentColor;
+}
+
+.showMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.showMoreButton {
+  background: white;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.showMoreButton:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #ec4899;
+}
+
+.chevronIcon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.showMoreButton:hover .chevronIcon {
+  transform: translateY(2px);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .productsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+  
+  .productInfo {
+    padding: 1rem;
+  }
+  
+  .productPrice {
+    font-size: 1.1rem;
+  }
 }

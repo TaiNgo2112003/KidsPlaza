@@ -3,12 +3,11 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 12px;
-  background-color: #9bbde2; /* 👈 Nền của cả thanh icons */
+  background-color: #9bbde2; 
   border-radius: 12px;
   overflow: hidden;
 }
 
-/* Icon container có bg riêng cho mỗi icon */
 .iconContainer {
   background-color: white;
   padding: 8px;
@@ -24,12 +23,10 @@
   transform: scale(1.05);
 }
 
-/* Swiper image (icon) */
 .iconContainer :global(img) {
   object-fit: contain;
 }
 
-/* Ẩn nút navigation nếu không cần */
 .iconSliderWrapper :global(.swiper-button-prev),
 .iconSliderWrapper :global(.swiper-button-next),
 .iconSliderWrapper :global(.swiper-pagination) {

@@ -17,7 +17,6 @@ const LoginPopup = ({ onClose }: { onClose: () => void }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Check for saved credentials
     const savedEmail = Cookies.get('rememberedEmail');
     if (savedEmail) {
       setEmail(savedEmail);
@@ -31,7 +30,6 @@ const LoginPopup = ({ onClose }: { onClose: () => void }) => {
     setError('');
 
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       if (email && password) {
@@ -39,14 +37,13 @@ const LoginPopup = ({ onClose }: { onClose: () => void }) => {
         document.cookie = `authToken=demo-token; path=/`;
         
         if (rememberMe) {
-          // Set persistent cookie (30 days)
           Cookies.set('rememberedEmail', email, { expires: 30 });
         } else {
           Cookies.remove('rememberedEmail');
         }
 
         onClose();
-        router.refresh(); // Refresh to update auth state
+        router.refresh();
       } else {
         setError('Vui lòng nhập email và mật khẩu');
       }

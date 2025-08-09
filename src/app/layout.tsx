@@ -28,8 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body className="relative">
           <CartButton />
 
-          <Header />
           <ApolloWrapper>
+            <Header />
+
             <main style={{ minHeight: "80vh", paddingTop: "100px" }}>
               {children}
               <ShoppingCart />

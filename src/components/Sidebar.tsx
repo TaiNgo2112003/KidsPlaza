@@ -129,7 +129,6 @@ export default function Sidebar() {
         <div className={styles.sidebarRightContainer}>
           <div className={styles.compactSidebarRight}>
 
-            {/* Greeting */}
             <div className={styles.avatarSection}>
               <Avatar
                 alt="User"
@@ -141,13 +140,11 @@ export default function Sidebar() {
               </div>
             </div>
 
-            {/* Đăng ký / Đăng nhập */}
             <div className={styles.authButtons}>
               <button className={styles.authBtn}>Đăng ký</button>
               <button className={styles.authBtn}>Đăng nhập</button>
             </div>
 
-            {/* Tài khoản: 3 mục nằm ngang với icon tick */}
             <div className={styles.accountOptionsRow}>
               <div className={styles.accountItem}>
                 <FaCheckCircle className={styles.iconTick} />
@@ -163,7 +160,6 @@ export default function Sidebar() {
               </div>
             </div>
 
-            {/* Banner Tải Ứng Dụng */}
             <div className={styles.banner}>
               <Image
                 src="https://cdn.kidsplaza.vn/_next/image?url=https%3A%2F%2Fstatic.kidsplaza.vn%2Fassets%2Fimages%2Fdownload-app-banner-204x153.png&w=640&q=100&fm=webp"
@@ -173,7 +169,6 @@ export default function Sidebar() {
               />
             </div>
 
-            {/* Mạng Xã Hội */}
             <div className={styles.socialRow}>
               <div className={styles.socialItem}>
                 <Image src="/SidebarIcons/facebook.svg" alt="Facebook" width={18} height={18} />

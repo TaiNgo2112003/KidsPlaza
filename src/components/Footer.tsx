@@ -1,9 +1,24 @@
 // src/components/Footer.tsx
+"use client";
 import styles from './Footer.module.css';
 import Image from 'next/image';
-import { FaFacebook, FaTiktok, FaYoutube, FaAmazon,FaBell,  FaPhone,  } from 'react-icons/fa';
+import { FaFacebook, FaTiktok, FaYoutube, FaAmazon, FaBell, FaPhone, } from 'react-icons/fa';
+import { useState } from "react";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
+  const handleSubmit = () => {
+    if (!email) {
+      setStatus("Vui lòng nhập email!");
+      return;
+    }
+    setStatus("Đang gửi...");
+    setTimeout(() => {
+    alert(`✅ Đã gửi email đến ${email} (Just for demo)`);
+      setEmail("");
+    }, 1000);
+  };
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
@@ -87,10 +102,17 @@ export default function Footer() {
             <h3 className={styles.footerTitle}>NHẬN TIN KHUYẾN MÃI & QUÀ</h3>
             <p className={styles.newsletterLabel}>Nhập địa chỉ email của bạn</p>
             <div className={styles.newsletterInput}>
-              <input type="email" placeholder="Email của bạn..." />
-              <button>Đăng ký</button>
+              <input
+                type="email"
+                placeholder="Email của bạn..."
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <button onClick={handleSubmit}>Đăng ký</button>
             </div>
+            {status && <p style={{ marginTop: "8px" }}>{status}</p>}
           </div>
+
 
 
 
@@ -160,27 +182,27 @@ export default function Footer() {
         </p>
       </div>
       <div style={{
-          position: 'fixed',
-          left: 10,
-          bottom: 100,
-          zIndex: 1000,
-        }}>
-          <FaBell size={40} color="#000" title="Ưu đãi" />
-        </div>
+        position: 'fixed',
+        left: 10,
+        bottom: 100,
+        zIndex: 1000,
+      }}>
+        <FaBell size={40} color="#000" title="Ưu đãi" />
+      </div>
 
-        <div style={{
-          position: 'fixed',
-          right: 10,
-          bottom: 100,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 10,
-          zIndex: 1000,
-        }}>
-          <FaFacebook size={32} color="#3b5998" title="Facebook" />
-          {/* <Image src="/icons/zalo.png" alt="Zalo" width={32} /> */}
-          <FaPhone size={32} color="#0b1f4bff" title="Hotline" />
-        </div>
+      <div style={{
+        position: 'fixed',
+        right: 10,
+        bottom: 100,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10,
+        zIndex: 1000,
+      }}>
+        <FaFacebook size={32} color="#3b5998" title="Facebook" />
+        {/* <Image src="/icons/zalo.png" alt="Zalo" width={32} /> */}
+        <FaPhone size={32} color="#0b1f4bff" title="Hotline" />
+      </div>
     </footer>
   )
 }

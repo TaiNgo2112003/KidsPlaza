@@ -1,4 +1,3 @@
-// components/ShoppingCart.tsx
 "use client";
 
 import { useCart } from "./CartContext";
@@ -41,9 +40,12 @@ export default function ShoppingCart() {
               {cartItems.map((item) => (
                 <div key={item.id} className={styles.cartItem}>
                   <div className={styles.itemImageContainer}>
+
                     <Image 
                       src={item.image} 
                       alt={item.name} 
+                      width={120}
+                      height={120}
                       className={styles.itemImage}
                     />
                   </div>

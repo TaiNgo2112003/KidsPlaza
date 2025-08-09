@@ -37,7 +37,6 @@
   filter: drop-shadow(0 0 2px currentColor);
 }
 
-/* Size variations */
 .small {
   width: 24px;
   height: 24px;
@@ -53,13 +52,12 @@
   height: 72px;
 }
 
-/* Color variations */
 .primary {
-  color: #ec4899; /* Pink-500 */
+  color: #ec4899; 
 }
 
 .secondary {
-  color: #8b5cf6; /* Purple-500 */
+  color: #8b5cf6; 
 }
 
 .white {
@@ -96,7 +94,6 @@
   }
 }
 
-/* Modern gradient spinner variation */
 .spinner.gradient::before {
   border-top-color: #ec4899;
   border-right-color: #8b5cf6;

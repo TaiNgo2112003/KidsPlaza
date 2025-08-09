@@ -4,20 +4,17 @@
     flex-shrink: 0;
     position: relative;
     margin-left: 120px;
-    /* giữ nguyên các style khác của bạn */
   }
 
   .layoutWrapper {
     display: flex;
     width: 100%;
     height: 60vh;
-    /* chiều cao full màn hình */
     overflow: hidden;
   }
 
   .mainContent {
     flex: 1;
-    /* chiếm toàn bộ khoảng trống giữa 2 sidebar */
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -26,9 +23,7 @@
 
   .bannerLarge {
     flex: 7;
-    /* 70% */
     position: relative;
-    /* để Image layout="fill" hoạt động */
     overflow: hidden;
     border-radius: 8px;
     margin: 8px;
@@ -36,14 +31,12 @@
 
   .bannerSmall {
     flex: 3;
-    /* 30% */
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     margin: 8px;
   }
 
-  /* Overlay Effect */
   .overlay {
     position: fixed;
     inset: 0;
@@ -54,7 +47,6 @@
     transition: all 0.3s ease;
   }
 
-  /* Compact Sidebar */
   .compactSidebar {
     border-radius: 15px;
     border-color: #1890ff;
@@ -136,7 +128,6 @@
     font-weight: 500;
   }
 
-  /* Submenu */
   .submenu {
     border-radius: 15px;
     position: absolute;
@@ -199,7 +190,6 @@
     color: #1890ff;
   }
 
-  /* Responsive Adjustments */
   @media (max-width: 768px) {
     .compactSidebar {
       width: 60px;
@@ -215,10 +205,8 @@
     }
   }
 
-  /* -------- RIGHT SIDEBAR -------- */
 
 
-  /* Greeting section */
   .avatarSection {
     display: flex;
     align-items: center;
@@ -229,10 +217,8 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    /* 👈 Làm tròn xoe */
     background-color: #ddd;
     overflow: hidden;
-    /* 👈 Nếu có ảnh, đảm bảo không bị tràn */
   }
 
   .greeting {
@@ -240,7 +226,6 @@
     line-height: 1.4;
   }
 
-  /* Category Items (nếu cần giữ) */
   .rightCategoryList {
     list-style: none;
     padding: 0;
@@ -267,7 +252,6 @@
     color: #1890ff;
   }
 
-  /* Auth Buttons */
   .authButtons {
     display: flex;
     justify-content: center;
@@ -292,7 +276,6 @@
     background-color: rgb(18, 37, 132);
   }
 
-  /* Tick List (Account Options) */
   .accountOptionsRow {
     display: flex;
     justify-content: space-between;
@@ -321,7 +304,6 @@
     color: #060905;
   }
 
-  /* Banner App Download */
   .banner {
     margin: 15px;
   }
@@ -336,7 +318,6 @@
     margin: 0 auto;
   }
 
-  /* Social Stats (Mạng xã hội) */
   .socialRow {
     display: flex;
     justify-content: space-between;
@@ -366,14 +347,12 @@
     object-fit: contain;
   }
 
-  /* Tick Style (Fallback) */
   .tick {
     font-size: 18px;
     line-height: 1;
   }
 
 
-  /* Thêm vào Sidebar.module.css */
   .bannerContainer {
     flex: 1;
     display: flex;
@@ -385,7 +364,6 @@
 
   .mainBanner {
     flex: 0.7;
-    /* Chiếm 70% */
     width: 100%;
     position: relative;
     border-radius: 8px;
@@ -394,19 +372,16 @@
 
   .secondaryBanner {
     flex: 0.3;
-    /* Chiếm 30% */
     width: 100%;
     position: relative;
     border-radius: 8px;
     overflow: hidden;
   }
 
-  /* mới */
   .sidebarRightContainer {
     width: 320px;
     flex-shrink: 0;
     position: relative;
-    /* hoặc fixed nếu bạn thích */
     background-color: #ffffff;
     border-left: 1px solid #e0e0e0;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.08);
