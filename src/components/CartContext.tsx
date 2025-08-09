@@ -22,6 +22,7 @@ interface CartContextType {
   removeFromCart: (productId: string) => void;
   increaseQuantity: (productId: string) => void;
   decreaseQuantity: (productId: string) => void;
+  clearCart: () => void; // 🆕
   cartTotal: number;
   isCartOpen: boolean;
   toggleCart: () => void;
@@ -32,8 +33,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false); 
-
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -90,6 +90,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
+  // 🆕 Hàm xoá toàn bộ giỏ hàng
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const cartTotal = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -107,6 +112,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,
+        clearCart, // 🆕
         cartTotal,
         isCartOpen,
         toggleCart,
