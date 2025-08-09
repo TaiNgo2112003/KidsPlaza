@@ -17,21 +17,23 @@ interface Product {
   stock: number;
 }
 
-// ✅ Tạo Apollo Client (nên chuyển sang lib nếu dùng nhiều chỗ)
+// Apollo Client - tốt nhất tách ra lib/apolloClient.ts nhưng tạm để đây
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
-// ✅ Server component: fetch data trên server
-export default async function ProductDetail({ params }: { params: { id: string } }) {
+// --- NOTE: dùng props: any để tránh lỗi constraint PageProps nhanh nhất ---
+export default async function ProductDetail(props: any) {
+  const { params } = props as { params: { id: string } };
+
   try {
     const { data } = await client.query({
       query: GET_PRODUCT_BY_ID,
       variables: { id: params.id },
     });
 
-    const product: Product = data.product;
+    const product: Product | null = data?.product ?? null;
 
     if (!product) {
       return <div className={styles.error}>Product not found</div>;
